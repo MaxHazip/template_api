@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
+    "develop": "nodemon index.js",
     "start": "node index.js"
   },
   "author": "",
@@ -12,7 +12,16 @@
   "keywords": [],
   "description": "",
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
     "express": "^5.1.0",
     "nodemon": "^3.1.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxHazip/template_api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MaxHazip/template_api/issues"
+  },
+  "homepage": "https://github.com/MaxHazip/template_api#readme"
 }
