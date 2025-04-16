@@ -18,8 +18,14 @@ app.get('/students', async (req, res) => {
 app.post('/students', (req, res) => {
   res.send('Добавление студентов')
 })
-app.delete('/students', (req, res) => {
-  res.send('Удаление студентов')
+app.delete('/students/:id', async (req, res) => {
+  const response = await supabase
+  .from('students')
+  .delete()
+  .eq('id', req.params.id)
+
+  res.json("Студент с id= " + req.params.id + " удален!")
+
 })
 app.put('/students', (req, res) => {
   res.send('Изменение студентов')
