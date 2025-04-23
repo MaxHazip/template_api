@@ -15,8 +15,12 @@ app.get('/students', async (req, res) => {
 
   res.json(data)
 })
-app.post('/students', (req, res) => {
-  res.send('Добавление студентов')
+app.post('/students', async (req, res) => {
+  const { error } = await supabase
+  .from('students')
+  .insert({ "id": 4, "full-name": 'Овечкин Максим Андреевич', "group": "23/9-1", "birthday": "2007-04-05", "phone-number": "+7(654)324-43-23", "gender" : "М"})
+
+  res.json("Студент добавлен!")
 })
 app.delete('/students/:id', async (req, res) => {
   const response = await supabase
@@ -27,8 +31,13 @@ app.delete('/students/:id', async (req, res) => {
   res.json("Студент с id= " + req.params.id + " удален!")
 
 })
-app.put('/students', (req, res) => {
-  res.send('Изменение студентов')
+app.put('/students', async (req, res) => {
+  const response = await supabase
+  .from('students')
+  .update({ "full-name": "Газманов Рамазан Олегович" })
+  .eq('id', req.params.id)
+
+  res.send(`full-name студента с id ${req.params.id} изменен`)
 })
 
 app.listen(port, () => {
