@@ -31,7 +31,7 @@ app.delete('/students/:id', async (req, res) => {
   res.json("Студент с id= " + req.params.id + " удален!")
 
 })
-app.put('/students', async (req, res) => {
+app.put('/students/:id', async (req, res) => {
   const response = await supabase
   .from('students')
   .update({ "full-name": "Газманов Рамазан Олегович" })
